@@ -29,16 +29,30 @@ describe('Thermostat', function() {
       expect(thermostat.temperature).toEqual(10);
     });
 
+    it('which can be reset to default', function(){
+      Thermostat.prototype.temperature = 15;
+      Thermostat.prototype.resetTemperature()
+      expect(thermostat.temperature).toEqual(20);
+    });
+
   });
 
   describe('has power save mode', function() {
 
     it('which has maximum temperature of 25 degrees when on', function(){
-      Thermostat.prototype.changePowerSaveMode()
+      Thermostat.prototype.powerSave = true;
       Thermostat.prototype.temperature = 24;
       Thermostat.prototype.increaseTemperature()
       Thermostat.prototype.increaseTemperature()
       expect(thermostat.temperature).toEqual(25);
+    });
+
+    it('and maximum temperature is 32 degrees when off', function(){
+      Thermostat.prototype.powerSave = false;
+      Thermostat.prototype.temperature = 31;
+      Thermostat.prototype.increaseTemperature()
+      Thermostat.prototype.increaseTemperature()
+      expect(thermostat.temperature).toEqual(32)
     });
 
   });
