@@ -1,11 +1,9 @@
 var Thermostat = function () {
   this.temperature = 20;
   this.powerSave = true;
+  this.colour = 'yellow';
 };
 
-// Thermostat.prototype.temperature = 20;
-
-// Thermostat.prototype.powerSave = true;
 
 Thermostat.prototype.increaseTemperature = function() {
   if (this.powerSave == true) {
@@ -18,17 +16,19 @@ Thermostat.prototype.increaseTemperature = function() {
       this.temperature++
     };
   };
+  this._changeDisplay();
 };
 
 Thermostat.prototype.decreaseTemperature = function() {
   if (this.temperature > 10) {
     this.temperature--
-    // console.log(Thermostat.prototype.temperature)
+    this._changeDisplay()
   };
 };
 
 Thermostat.prototype.resetTemperature = function() {
   this.temperature = 20
+  this._changeDisplay()
 };
 
 Thermostat.prototype.changePowerSaveMode = function() {
@@ -43,5 +43,20 @@ Thermostat.prototype.changePowerSaveMode = function() {
 };
 
 Thermostat.prototype._powerSaveReset = function() {
-  this.temperature = 25
+  if (this.temperature > 25) {
+    this.temperature = 25
+  };
+};
+
+Thermostat.prototype._changeDisplay = function() {
+
+  if (this.temperature < 18) {
+    this.colour = 'green'
+  };
+  if (this.temperature >= 18 && this.temperature <= 24) {
+    this.colour = 'yellow'
+  };
+  if (this.temperature >= 25) {
+    this.colour = 'red'
+  };
 };
