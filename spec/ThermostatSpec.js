@@ -11,27 +11,27 @@ describe('Thermostat', function() {
       expect(thermostat.temperature).toEqual(20)
     });
 
-    it('you can increase the temp', function() {
-      Thermostat.prototype.increaseTemperature()
+    it('and you can increase the temp', function() {
+      thermostat.increaseTemperature()
       expect(thermostat.temperature).toEqual(21)
     });
 
-    it('you can decrease the temp', function() {
-      Thermostat.prototype.temperature = 30;
-      Thermostat.prototype.decreaseTemperature()
+    it('and you can decrease the temp', function() {
+      thermostat.temperature = 30;
+      thermostat.decreaseTemperature()
       expect(thermostat.temperature).toEqual(29)
     });
 
-    it('minimum temperature is 10 degrees', function () {
-      Thermostat.prototype.temperature = 11;
-      Thermostat.prototype.decreaseTemperature()
-      Thermostat.prototype.decreaseTemperature()
+    it('and minimum temperature is 10 degrees', function () {
+      thermostat.temperature = 11;
+      thermostat.decreaseTemperature()
+      thermostat.decreaseTemperature()
       expect(thermostat.temperature).toEqual(10);
     });
 
     it('which can be reset to default', function(){
-      Thermostat.prototype.temperature = 15;
-      Thermostat.prototype.resetTemperature()
+      thermostat.temperature = 15;
+      thermostat.resetTemperature()
       expect(thermostat.temperature).toEqual(20);
     });
 
@@ -40,19 +40,26 @@ describe('Thermostat', function() {
   describe('has power save mode', function() {
 
     it('which has maximum temperature of 25 degrees when on', function(){
-      Thermostat.prototype.powerSave = true;
-      Thermostat.prototype.temperature = 24;
-      Thermostat.prototype.increaseTemperature()
-      Thermostat.prototype.increaseTemperature()
+      thermostat.powerSave = true;
+      thermostat.temperature = 24;
+      thermostat.increaseTemperature()
+      thermostat.increaseTemperature()
       expect(thermostat.temperature).toEqual(25);
     });
 
     it('and maximum temperature is 32 degrees when off', function(){
-      Thermostat.prototype.powerSave = false;
-      Thermostat.prototype.temperature = 31;
-      Thermostat.prototype.increaseTemperature()
-      Thermostat.prototype.increaseTemperature()
+      thermostat.powerSave = false;
+      thermostat.temperature = 31;
+      thermostat.increaseTemperature()
+      thermostat.increaseTemperature()
       expect(thermostat.temperature).toEqual(32)
+    });
+
+    it('which resets temp to 25 when turned on (if temp over 25)', function(){
+      thermostat.temperature = 29;
+      thermostat.powerSave = false;
+      thermostat.changePowerSaveMode()
+      expect(thermostat.temperature).toEqual(25)
     });
 
   });
