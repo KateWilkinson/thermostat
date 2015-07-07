@@ -18,6 +18,7 @@ document.getElementById('reset').onclick=function(){
   changeColour()
 };
 
+
 function changeColour() {
   if (thermostat.colour == 'green') {
     document.getElementById('current_temperature').className = 'green';

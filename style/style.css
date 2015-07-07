@@ -1,0 +1,11 @@
+    h1.yellow {font-size: 300%; color: #F5E53B;}
+    h1.red {font-size: 300%; color: #E5211D;}
+    h1.green {font-size: 300%; color: #2A922A;}
+    p.text {font-size: 100%; color: #212421;}
+    #rcorners1 {
+      border-radius: 25px;
+      background: #8AC007;
+      padding: 20px;
+      width: 200px;
+      height: 100%;
+    }
