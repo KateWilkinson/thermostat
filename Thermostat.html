@@ -4,16 +4,18 @@
 <meta charset='utf-8'>
   <title>Thermostat HTML</title>
   <script type="text/javascript" src="src/Thermostat.js"></script>
+  <!-- // <script type="text/javascript" src="src/app.js"></script> -->
 </head>
   <center>
   <body>
-    <h1>
+    <h1 id='current_temperature'>
       20°c
     </h1>
-    <div>
-      <input type='submit' value='-'>
-      <input type='submit' value='+'>
+    <div id='buttons'>
+      <input type='submit' value='-' id='down_button' />
+      <input type='submit' value='+' id='up_button' />
     </div>
   </body>
   </center>
+<script type="text/javascript" src="src/app.js"></script>
 </html>
