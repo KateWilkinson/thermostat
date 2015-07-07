@@ -1,6 +1,6 @@
-Thermostat!
+#Thermostat!
 
-Specification
+#Specification
 
 *Thermostat starts at 20 degrees
 *You can increase the temp with the up button
