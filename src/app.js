@@ -1,4 +1,5 @@
 var thermostat = new Thermostat();
+UpdateThermo();
 
 $('#up_button').click(function() {
   thermostat.increaseTemperature();
@@ -35,12 +36,13 @@ function changeColour() {
 function UpdateThermo(){
   $('#current_temperature').html(thermostat.temperature + '°c');
   changeColour();
+  getWeather();
 };
 
-$(document).ready(function(){
+function getWeather(){
         var url = 'http://api.openweathermap.org/data/2.5/weather?q=London&APPID=a1151fe1a04efc268bb7ee2de474340a&units=metric';
         var response = $.get(url).done(function() {
           var data = response.responseJSON.main.temp;
-          $("#weatherWidget").append(data);
+          $("#weatherWidget").html(data);
         });
-    });
+    };
