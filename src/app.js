@@ -36,3 +36,11 @@ function UpdateThermo(){
   $('#current_temperature').html(thermostat.temperature + '°c');
   changeColour();
 };
+
+$(document).ready(function(){
+        var url = 'http://api.openweathermap.org/data/2.5/weather?q=London&APPID=a1151fe1a04efc268bb7ee2de474340a&units=metric';
+        var response = $.get(url).done(function() {
+          var data = response.responseJSON.main.temp;
+          $("#weatherWidget").append(data);
+        });
+    });
