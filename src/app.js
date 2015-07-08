@@ -33,6 +33,6 @@ function changeColour() {
 };
 
 function UpdateThermo(){
-  document.getElementById('current_temperature').innerHTML = thermostat.temperature + '°c';
+  $('#current_temperature').html(thermostat.temperature + '°c');
   changeColour();
 };
