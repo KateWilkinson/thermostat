@@ -6,22 +6,27 @@
   <script type="text/javascript" src="src/Thermostat.js"></script>
   <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
-  <center>
   <body>
-    <div id='rcorners1'>
+    <center><div class='rcornerbox'>
       <h1 class="yellow" id='current_temperature'>
         20°c
       </h1>
-      <div id='buttons'>
-        <input type='submit' value='-' id='down_button' />
-        <input type='submit' value='+' id='up_button' />
-        <input type='submit' value='reset' id='reset' />
+      <div>
+        <center>
+        <input type='submit' value='-' id='down_button' class='button'/>
+        <input type='submit' value='+' id='up_button' class='button'/>
+        <input type='submit' value='reset' id='reset' class='button'/>
+        </center>
       </div>
-      <p id='powersave' class='text'>
-        PowerSave?<input type='checkbox' checked id='checkbox'/>
-      </p>
-    </div>
+        <div class="text">PowerSave</div>
+        <div class="onoffswitch">
+          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+          <label class="onoffswitch-label" for="myonoffswitch">
+          <span class="onoffswitch-inner"></span>
+          <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+    </div></center>
   </body>
-  </center>
 <script type="text/javascript" src="src/app.js"></script>
 </html>
