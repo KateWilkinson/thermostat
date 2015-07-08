@@ -22,13 +22,13 @@ document.getElementById('myonoffswitch').onchange=function(){
 
 function changeColour() {
   if (thermostat.colour == 'green') {
-    document.getElementById('current_temperature').className = 'green';
+    $('#current_temperature').removeClass().addClass('green');
     }
   if (thermostat.colour == 'yellow') {
-    document.getElementById('current_temperature').className = 'yellow';
+    $('#current_temperature').removeClass().addClass('yellow');
     }
   if (thermostat.colour == 'red') {
-    document.getElementById('current_temperature').className = 'red';
+    $('#current_temperature').removeClass().addClass('red');
   };
 };
 
