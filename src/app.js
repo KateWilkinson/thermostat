@@ -2,20 +2,26 @@ var thermostat = new Thermostat();
 
 document.getElementById('up_button').onclick=function() {
   thermostat.increaseTemperature();
-  document.getElementById('current_temperature').innerHTML = thermostat.temperature + '°c'
-  changeColour()
+  document.getElementById('current_temperature').innerHTML = thermostat.temperature + '°c';
+  changeColour();
 };
 
 document.getElementById('down_button').onclick=function() {
   thermostat.decreaseTemperature();
-  document.getElementById('current_temperature').innerHTML = thermostat.temperature + '°c'
-  changeColour()
+  document.getElementById('current_temperature').innerHTML = thermostat.temperature + '°c';
+  changeColour();
 };
 
 document.getElementById('reset').onclick=function(){
   thermostat.resetTemperature();
-  document.getElementById('current_temperature').innerHTML = thermostat.temperature + '°c'
-  changeColour()
+  document.getElementById('current_temperature').innerHTML = thermostat.temperature + '°c';
+  changeColour();
+};
+
+document.getElementById('myonoffswitch').onchange=function(){
+  thermostat.changePowerSaveMode();
+  document.getElementById('current_temperature').innerHTML = thermostat.temperature + '°c';
+  changeColour();
 };
 
 
@@ -30,6 +36,3 @@ function changeColour() {
     document.getElementById('current_temperature').className = 'red';
   };
 };
-
-
-
