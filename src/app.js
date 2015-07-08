@@ -1,24 +1,24 @@
 var thermostat = new Thermostat();
 
-document.getElementById('up_button').onclick=function() {
+$('#up_button').click(function() {
   thermostat.increaseTemperature();
   UpdateThermo();
-};
+});
 
-document.getElementById('down_button').onclick=function() {
+$('#down_button').click(function() {
   thermostat.decreaseTemperature();
   UpdateThermo();
-};
+});
 
-document.getElementById('reset').onclick=function(){
+$('#reset').click(function() {
   thermostat.resetTemperature();
   UpdateThermo();
-};
+});
 
-document.getElementById('myonoffswitch').onchange=function(){
+$('#myonoffswitch').click(function() {
   thermostat.changePowerSaveMode();
   UpdateThermo();
-};
+});
 
 function changeColour() {
   if (thermostat.colour == 'green') {
