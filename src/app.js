@@ -1,25 +1,38 @@
 var thermostat = new Thermostat();
-UpdateThermo();
+
+$(window).load(function () {
+  updateThermo();
+  getCityTemp($('#select_city').val());
+  getCityWeather($('#select_city').val());
+});
 
 $('#up_button').click(function() {
   thermostat.increaseTemperature();
-  UpdateThermo();
+  updateThermo();
 });
 
 $('#down_button').click(function() {
   thermostat.decreaseTemperature();
-  UpdateThermo();
+  updateThermo();
 });
 
 $('#reset').click(function() {
   thermostat.resetTemperature();
-  UpdateThermo();
+  updateThermo();
 });
 
 $('#myonoffswitch').click(function() {
   thermostat.changePowerSaveMode();
-  UpdateThermo();
+  updateThermo();
 });
+
+$('#select_city').change(function(){
+  getCityTemp($(this).val());
+  getCityWeather($(this).val());
+});
+
+
+
 
 function changeColour() {
   if (thermostat.colour == 'green') {
@@ -33,16 +46,23 @@ function changeColour() {
   };
 };
 
-function UpdateThermo(){
+function updateThermo(){
   $('#current_temperature').html(thermostat.temperature + '°c');
   changeColour();
-  getWeather();
 };
 
-function getWeather(){
-        var url = 'http://api.openweathermap.org/data/2.5/weather?q=London&APPID=a1151fe1a04efc268bb7ee2de474340a&units=metric';
-        var response = $.get(url).done(function() {
-          var data = response.responseJSON.main.temp;
-          $("#weatherWidget").html(data);
-        });
-    };
+function getCityTemp(city){
+  var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=a1151fe1a04efc268bb7ee2de474340a&units=metric';
+  var response = $.get(url).done(function() {
+    var temp = response.responseJSON.main.temp;
+    $("#tempWidget").html('Current temperature in ' + city +': ' + temp + '°c');
+    });
+};
+
+function getCityWeather(city){
+  var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city +'&APPID=a1151fe1a04efc268bb7ee2de474340a&units=metric';
+  var response = $.get(url).done(function() {
+    var weather = response.responseJSON.weather[0].main;
+    $("#weatherWidget").html('Forecast is: ' + weather);
+  });
+};

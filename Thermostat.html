@@ -9,7 +9,8 @@
   <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
   <body>
-    <center><div class='rcornerbox'>
+    <center>
+    <div class='rcornerbox'>
       <h1 class="yellow" id='current_temperature'>
       </h1>
       <div>
@@ -28,14 +29,22 @@
           </label>
         </div>
     </div>
-    <select class='select'>
-      <option>here</option>
-      <option>there</option>
-      <option>otherplace</option>
-      <option>moon</option>
-    </select>
+    <div class='padded'>
+      <select id='select_city'>
+        <option value='London'>London</option>
+        <option value='Paris'>Paris</option>
+        <option value='Berlin'>Berlin</option>
+        <option value='New York'>New York</option>
+        <option value='Tokyo'>Tokyo</option>
+        <option value='Shanghai'>Shanghai</option>
+        <option value='Mumbai'>Mumbai</option>
+      </select>
+    </div>
+    <div id="tempWidget" class="text">
+    </div>
     <div id="weatherWidget" class="text">
-    </div></center>
+    </div>
+    </center>
 <script type="text/javascript" src="src/app.js"></script>
   </body>
 </html>
