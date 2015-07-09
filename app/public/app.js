@@ -9,11 +9,13 @@ $(window).load(function () {
 $('#up_button').click(function() {
   thermostat.increaseTemperature();
   updateThermo();
+  $.post('/',{temperature: thermostat.temperature})
 });
 
 $('#down_button').click(function() {
   thermostat.decreaseTemperature();
   updateThermo();
+  $.post('/',{temperature: thermostat.temperature})
 });
 
 $('#reset').click(function() {
