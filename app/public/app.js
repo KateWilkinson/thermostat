@@ -67,3 +67,19 @@ function getCityWeather(city){
     $("#weatherWidget").html('Forecast is: ' + weather);
   });
 };
+
+navigator.geolocation.getCurrentPosition(currentLocation);
+
+function currentLocation(Geoposition){
+  latitude = Geoposition.coords.latitude;
+  longitude = Geoposition.coords.longitude;
+  currentLocationTemp();
+};
+
+function currentLocationTemp(){
+  ($.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&units=metric',
+    function (response) {
+      $('#location_temp').html(response.main.temp);
+      $('#location_name').html(response.name);
+    }));
+};
