@@ -1,12 +1,13 @@
 require 'sinatra/base'
+require 'byebug'
 
 class ThermoApp < Sinatra::Base
 
   enable :sessions
 
   post '/' do
-    user_temperature = params[:temperature]
-    session[:temp] = user_temperature
+    temperature = params[:temperature]
+    session[:temperature] = temperature
   end
 
   get '/' do

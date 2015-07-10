@@ -1,7 +1,8 @@
 var thermostat = new Thermostat();
 
 $(window).load(function () {
-  updateThermo();
+  thermostat.temperature = $('#current_temperature').text();
+  changeColour();
   getCityTemp($('#select_city').val());
   getCityWeather($('#select_city').val());
 });
@@ -9,13 +10,11 @@ $(window).load(function () {
 $('#up_button').click(function() {
   thermostat.increaseTemperature();
   updateThermo();
-  $.post('/',{temperature: thermostat.temperature})
 });
 
 $('#down_button').click(function() {
   thermostat.decreaseTemperature();
   updateThermo();
-  $.post('/',{temperature: thermostat.temperature})
 });
 
 $('#reset').click(function() {
@@ -34,24 +33,24 @@ $('#select_city').change(function(){
 });
 
 
-
-
 function changeColour() {
-  if (thermostat.colour == 'green') {
+  if (thermostat.changeDisplay() == 'green') {
     $('#current_temperature').removeClass().addClass('green');
     }
-  if (thermostat.colour == 'yellow') {
+  if (thermostat.changeDisplay() == 'yellow') {
     $('#current_temperature').removeClass().addClass('yellow');
     }
-  if (thermostat.colour == 'red') {
+  if (thermostat.changeDisplay() == 'red') {
     $('#current_temperature').removeClass().addClass('red');
   };
 };
 
 function updateThermo(){
-  $('#current_temperature').html(thermostat.temperature + '°c');
+  $.post('/',{'temperature': '' + thermostat.temperature})
   changeColour();
+  $('#current_temperature').html(thermostat.temperature);
 };
+
 
 function getCityTemp(city){
   var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=a1151fe1a04efc268bb7ee2de474340a&units=metric';
