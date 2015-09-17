@@ -42,14 +42,14 @@ function changeColour() {
     }
   if (thermostat.changeDisplay() == 'red') {
     $('#current_temperature').removeClass().addClass('red');
-  };
-};
+  }
+}
 
 function updateThermo(){
-  $.post('/',{'temperature': '' + thermostat.temperature})
+  $.post('/',{'temperature': '' + thermostat.temperature});
   changeColour();
   $('#current_temperature').html(thermostat.temperature);
-};
+}
 
 
 function getCityTemp(city){
@@ -58,7 +58,7 @@ function getCityTemp(city){
     var temp = response.responseJSON.main.temp;
     $("#tempWidget").html('Current temperature in ' + city +': ' + temp + '°c');
     });
-};
+}
 
 function getCityWeather(city){
   var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city +'&APPID=a1151fe1a04efc268bb7ee2de474340a&units=metric';
@@ -66,7 +66,7 @@ function getCityWeather(city){
     var weather = response.responseJSON.weather[0].main;
     $("#weatherWidget").html('Forecast is: ' + weather);
   });
-};
+}
 
 navigator.geolocation.getCurrentPosition(currentLocation);
 
@@ -74,7 +74,7 @@ function currentLocation(Geoposition){
   latitude = Geoposition.coords.latitude;
   longitude = Geoposition.coords.longitude;
   currentLocationTemp();
-};
+}
 
 function currentLocationTemp(){
   ($.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&units=metric',
@@ -82,4 +82,4 @@ function currentLocationTemp(){
       $('#location_temp').html(response.main.temp);
       $('#location_name').html(response.name);
     }));
-};
+}
